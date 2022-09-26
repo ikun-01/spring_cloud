@@ -1,0 +1,16 @@
+server:
+  port: 9001
+
+
+#暴露全部的监控信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# 避免报错：is not in the allowed list of proxy host names.
+# If it should be allowed add it to hystrix.dashboard.proxyStreamAllowList.
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: localhost
