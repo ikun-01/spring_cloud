@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.concurrent.TimeUnit;
-
 @RestController
 @Slf4j
 @Api(description = "订单模块")
@@ -37,7 +35,6 @@ public class PaymentController {
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id){
         Payment payment = paymentService.getPaymentById(id);
         log.info("Payment=>{}",payment);
-        try { TimeUnit.SECONDS.sleep(2);} catch (InterruptedException e) { e.printStackTrace();}
         if (payment != null){
             return new CommonResult<Payment>(200,"查找成功!,端口号为:" + serverPort,payment);
         }
